@@ -24,11 +24,10 @@ jobs:
     - name: Install dependencies
       run: |
         uv venv
-        . .venv/bin/activate
-        uv pip install mkdocs
-        uv pip install $(mkdocs get-deps)
+        uv pip install -r requirements.txt
+        uv pip install $(uv run mkdocs get-deps)
     - name: Build docs
-      run: mkdocs build -v
+      run: uv run mkdocs build -v
     - name: Upload artifacts
       id: deployment
       uses: actions/upload-pages-artifact@v3
