@@ -1,0 +1,24 @@
+/* More space at the bottom of the page. */
+.md-main__inner {
+  margin-bottom: 1.5rem;
+}
+
+/* Invert logo colors in navbar. */
+.md-logo img {
+  filter: invert(100%);
+}
+
+/* Add space between Material buttons on mobile. */
+.md-button {
+  margin-bottom: 0.2rem;
+}
+
+/* Add space above bold ToC entries. */
+.md-sidebar--secondary .md-nav__item:not(:first-child):has(strong) {
+  margin-top: 1rem;
+}
+
+/* Don't uppercase H5 headings. */
+.md-typeset h5 {
+  text-transform: none;
+}

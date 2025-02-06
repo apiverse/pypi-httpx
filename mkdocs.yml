@@ -1,0 +1,115 @@
+site_name: HTTPX
+site_url: https://apiverse.github.io/pypi-httpx/
+repo_url: https://github.com/encode/httpx
+repo_name: encode/httpx
+site_dir: site
+
+theme:
+  name: material
+  features:
+  - announce.dismiss
+  - content.action.edit
+  - content.action.view
+  - content.code.annotate
+  - content.code.copy
+  - content.tooltips
+  - navigation.expand
+  - navigation.footer
+  - navigation.instant.preview
+  - navigation.path
+  - navigation.sections
+  - navigation.top
+  - search.highlight
+  - search.suggest
+  - toc.follow
+  palette:
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: blue
+    accent: yellow
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: blue
+    accent: yellow
+    toggle:
+      icon: material/weather-night
+      name: Switch to system preference
+
+extra_css:
+- css/custom.css
+- css/material.css
+- css/mkdocstrings.css
+- css/insiders.css
+
+markdown_extensions:
+- attr_list
+- admonition
+- footnotes
+- md_in_html
+- pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+- pymdownx.keys
+- pymdownx.magiclink
+- pymdownx.snippets:
+    base_path: [!relative $config_dir]
+    check_paths: true
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.tabbed:
+    alternate_style: true
+    slugify: !!python/object/apply:pymdownx.slugs.slugify
+      kwds:
+        case: lower
+- pymdownx.tasklist:
+    custom_checkbox: true
+- toc:
+    permalink: "#"
+
+plugins:
+- search
+- gen-files:
+    scripts:
+    - scripts/gen-api-ref.py
+- literate-nav:
+    nav_file: SUMMARY.md
+- section-index
+- mkdocstrings:
+    handlers:
+      python:
+        inventories:
+        - url: https://docs.python.org/3.13/objects.inv
+          domains: [std, py]
+        options:
+          docstring_options:
+            ignore_init_summary: true
+          docstring_style: google
+          docstring_section_style: table
+          filters: ["!^_", "^__"]
+          heading_level: 1
+          inherited_members: true
+          merge_init_into_class: true
+          parameter_headings: true
+          separate_signature: true
+          show_bases: false
+          show_inheritance_diagram: true
+          show_root_heading: true
+          show_root_full_path: false
+          show_source: true
+          show_signature_annotations: true
+          show_symbol_type_heading: true
+          show_symbol_type_toc: true
+          signature_crossrefs: true
+          summary: true
+- minify:
+    minify_html: !ENV [DEPLOY, false]
