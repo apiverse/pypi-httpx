@@ -7,7 +7,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
-  - cron: '0 * * * *'
+  - cron: '0 0 * * *'  # each day
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: '3.x'
     - name: Setup uv
-      uses: astral-sh/setup-uv@v1
+      uses: astral-sh/setup-uv@v5
     - name: Install dependencies
       run: |
         uv venv
